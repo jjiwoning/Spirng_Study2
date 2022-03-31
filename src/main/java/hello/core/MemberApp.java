@@ -9,7 +9,9 @@ public class MemberApp {
     // 순수한 자바 코드로 테스트 개발 -> 한계가 있다.
     // junit을 쓰는게 좋다
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        //MemberService memberService = new MemberServiceImpl();
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
