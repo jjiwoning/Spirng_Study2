@@ -41,8 +41,8 @@ class ApplicationContextBasicFindTest {
         //구체적인 타입으로도 스프링 빈을 조회할 수 있다. -> 구현에 의존한거라 좋은 방식은 아니다. (역할과 구현의 분리에서 역할에 의존해야되기 때문)
         // 유연성이 떨어진다.
         MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
-//        System.out.println("memberService = " + memberService);
-//        System.out.println("memberService.getClass() = " + memberService.getClass());
+        //System.out.println("memberService = " + memberService);
+        //System.out.println("memberService.getClass() = " + memberService.getClass());
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
