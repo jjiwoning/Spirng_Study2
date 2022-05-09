@@ -25,6 +25,7 @@ class ApplicationContextBasicFindTest {
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
     // 인터페이스로 조회를 하면 인터페이스의 구현체가 대상이 된다.
+    // 빈 타입으로 조회를 할 때 같은 타입의 빈이 2개 이상이라면 오류가 발생한다.
     @Test
     @DisplayName("빈 타입으로만 조회")
     void findBeanByType(){
