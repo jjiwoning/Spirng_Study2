@@ -32,4 +32,9 @@ public class OrderServiceImpl implements OrderService{
 
     }
 
+    //테스트 용도 코드
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
+
 }
