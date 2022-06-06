@@ -27,7 +27,7 @@ public class AppConfig {
     //4. call AppConfig.orderService
     //5. call AppConfig.memberRepository
     // 실행 순서는 보장이 안되지만 이 갯수대로 출력이 될 것이다. 근데 실제로 코드를 돌려보면 각각 1개씩 출력이 된다. -> 총 3개 실행됨.
-    // 왤까?
+    // 왤까? -> AppConfig에 비밀이 숨겨져있다.
     @Bean
     public MemberService memberService(){
         System.out.println("call AppConfig.memberService"); // -> soutm 단축키로 바로 호출 가능
