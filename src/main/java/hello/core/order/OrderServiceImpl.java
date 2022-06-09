@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 //import hello.core.discount.FixDiscountPolicy;
 //import hello.core.discount.RateDiscountPolicy;
@@ -8,10 +9,11 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor // -> 우리가 앞서 만든 생성자를 그대로 만들어준다. final이 붙은 객체 변수들을 파라미터로 받는 생성자 만들어주는 역할
+//@RequiredArgsConstructor // -> 우리가 앞서 만든 생성자를 그대로 만들어준다. final이 붙은 객체 변수들을 파라미터로 받는 생성자 만들어주는 역할
 public class OrderServiceImpl implements OrderService{
 
     // 생성자 주입을 사용해야 final 키워드를 사용할 수 있다.
@@ -33,11 +35,11 @@ public class OrderServiceImpl implements OrderService{
 //        this.memberRepository = memberRepository;
 //    }
 
-    //@Autowired // 생성자 위에다 하면 된다. + 생성자가 1개만 있다면 Autowired를 생략해도 자동 주입이 된다.
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    @Autowired // 생성자 위에다 하면 된다. + 생성자가 1개만 있다면 Autowired를 생략해도 자동 주입이 된다.
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
@@ -51,8 +53,8 @@ public class OrderServiceImpl implements OrderService{
     }
 
     //테스트 용도 코드
-//    public MemberRepository getMemberRepository(){
-//        return memberRepository;
-//    }
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
+    }
 
 }
